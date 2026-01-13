@@ -1,0 +1,227 @@
+Below is **original, structured content** you can directly put into your `answer.md` file.
+It’s written in **simple language**, with **headings and bullet points**, and **no copy-paste wording**.
+
+---
+
+# Node.js Architecture – Detailed Explanation
+
+Node.js is a JavaScript runtime that allows us to run JavaScript outside the browser. It is designed to handle **asynchronous**, **non-blocking**, and **high-performance** applications, especially backend services.
+
+---
+
+## 1. Node.js Architecture
+
+Node.js follows a **single-threaded, event-driven, non-blocking architecture**.
+
+### Key Characteristics
+
+* Single main thread for JavaScript execution
+* Uses asynchronous operations instead of blocking calls
+* Handles multiple clients efficiently
+* Delegates heavy work to background systems
+
+### High-Level Flow
+
+1. Client sends a request
+2. Node.js receives it
+3. If the task is non-blocking → handled immediately
+4. If the task is blocking → delegated to libuv / thread pool
+5. Result is returned via callbacks or promises
+
+---
+
+## 2. JavaScript Engine (V8)
+
+### What is V8?
+
+* V8 is Google’s JavaScript engine
+* Written in C++
+* Converts JavaScript code into machine code
+
+### Role of V8 in Node.js
+
+* Executes JavaScript code
+* Handles memory management (heap & garbage collection)
+* Optimizes code using Just-In-Time (JIT) compilation
+
+👉 Node.js depends on V8 to **run JavaScript fast and efficiently**
+
+---
+
+## 3. Node.js Core APIs
+
+### What are Core APIs?
+
+* Built-in modules provided by Node.js
+* No need to install externally
+
+### Examples
+
+* `fs` → File system
+* `http` → Create servers
+* `path` → File paths
+* `crypto` → Encryption
+* `events` → Event handling
+
+### Purpose
+
+* Provide server-side features
+* Act as a bridge between JavaScript and system-level operations
+
+---
+
+## 4. Native Bindings
+
+### What are Native Bindings?
+
+* Connect JavaScript code to C/C++ code
+* Allow Node.js to access system-level functionality
+
+### Why They Are Needed
+
+* JavaScript alone cannot access OS features
+* Native bindings enable fast execution of low-level tasks
+
+### Example
+
+* File system operations internally use C++ via bindings
+
+---
+
+## 5. Event Loop
+
+### What is the Event Loop?
+
+* A mechanism that continuously checks:
+
+  * Call stack
+  * Queues
+* Decides what code should run next
+
+### Role of Event Loop
+
+* Enables non-blocking behavior
+* Handles callbacks and promises
+* Keeps Node.js responsive
+
+---
+
+## 6. libuv
+
+### What is libuv?
+
+* A C library used by Node.js
+* Handles asynchronous operations
+* Works across different operating systems
+
+### Why Node.js Needs libuv
+
+* JavaScript is single-threaded
+* libuv handles tasks that cannot be done directly by JS
+* Provides event loop and thread pool
+
+### Responsibilities of libuv
+
+* Event loop implementation
+* Asynchronous I/O
+* File system operations
+* Networking
+* Thread pool management
+
+---
+
+## 7. Thread Pool
+
+### What is a Thread Pool?
+
+* A group of background threads
+* Used to execute blocking or heavy tasks
+
+### Why Node.js Uses a Thread Pool
+
+* Prevents blocking the main JavaScript thread
+* Improves performance
+* Allows parallel execution of heavy operations
+
+### Operations Handled by Thread Pool
+
+* File system operations (`fs`)
+* DNS lookup
+* Compression
+* Encryption (`crypto`)
+* Some database operations
+
+---
+
+## 8. Worker Threads
+
+### What are Worker Threads?
+
+* Separate JavaScript threads
+* Each worker has its own event loop and memory
+
+### Why Worker Threads Are Needed
+
+* CPU-intensive tasks block the main thread
+* Workers allow parallel execution of JS code
+
+### Difference: Thread Pool vs Worker Threads
+
+| Feature       | Thread Pool           | Worker Threads       |
+| ------------- | --------------------- | -------------------- |
+| Managed by    | libuv                 | Node.js              |
+| Type of tasks | Native blocking tasks | JavaScript CPU tasks |
+| JS execution  | ❌ No                  | ✅ Yes                |
+| Memory        | Shared internally     | Separate             |
+
+---
+
+## 9. Event Loop Queues
+
+### Macro Task Queue
+
+Handles large asynchronous tasks.
+
+**Examples**
+
+* `setTimeout`
+* `setInterval`
+* `setImmediate`
+* I/O callbacks
+
+---
+
+### Micro Task Queue
+
+Handles high-priority tasks.
+
+**Examples**
+
+* `Promise.then()`
+* `catch()`
+* `finally()`
+* `process.nextTick()`
+
+---
+
+### Execution Priority
+
+1. Micro Task Queue (highest priority)
+2. Macro Task Queue
+
+👉 Micro tasks always execute **before** macro tasks.
+
+---
+
+## 10. Summary
+
+* Node.js is fast due to non-blocking architecture
+* V8 executes JavaScript
+* Core APIs provide server features
+* Native bindings connect JS with C++
+* libuv manages async tasks and event loop
+* Thread pool handles blocking operations
+* Worker threads handle CPU-heavy JavaScript
+* Event loop manages execution order
+
+---
