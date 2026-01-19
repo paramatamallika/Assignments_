@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "1768835405913",
+      "name": "Mallika",
+      "email": "mallika@gmail.com",
+      "age": 22
+    }
+  ],
+  "todos": [
+    {
+      "id": "1768835574888",
+      "title": "Learn Express Routing",
+      "completed": false,
+      "userId": "1716200000000"
+    }
+  ]
+}
