@@ -1,0 +1,80 @@
+1.Fetch all students:
+select * from Students;
+OUTPUT:
+| id | name           | email                                                           | age | course                 | created_at          |
+| -- | -------------- | --------------------------------------------------------------- | --- | ---------------------- | ------------------- |
+| 1  | Alice Johnson  | [alice.johnson@example.com](mailto:alice.johnson@example.com)   | 20  | Computer Science       | 2026-01-21 10:00:00 |
+| 2  | Bob Smith      | [bob.smith@example.com](mailto:bob.smith@example.com)           | 22  | Mechanical Engineering | 2026-01-21 10:00:01 |
+| 3  | Carla Williams | [carla.williams@example.com](mailto:carla.williams@example.com) | 19  | Electrical Engineering | 2026-01-21 10:00:02 |
+| 4  | David Brown    | [david.brown@example.com](mailto:david.brown@example.com)       | 21  | Civil Engineering      | 2026-01-21 10:00:03 |
+| 5  | Eva Davis      | [eva.davis@example.com](mailto:eva.davis@example.com)           | 23  | Information Technology | 2026-01-21 10:00:04 |
+| 6  | Frank Wilson   | [frank.wilson@example.com](mailto:frank.wilson@example.com)     | 20  | Mathematics            | 2026-01-21 10:00:05 |
+| 7  | Grace Lee      | [grace.lee@example.com](mailto:grace.lee@example.com)           | 22  | Physics                | 2026-01-21 10:00:06 |
+
+
+2.Fetch students older than 20:
+select * from Students where age>20;
+OUTPUT:
+| id | name      | email                                                 | age | course                 | created_at          |
+| -- | --------- | ----------------------------------------------------- | --- | ---------------------- | ------------------- |
+| 2  | Bob Smith | [bob.smith@example.com](mailto:bob.smith@example.com) | 22  | Mechanical Engineering | 2026-01-21 10:00:01 |
+| 5  | Eva Davis | [eva.davis@example.com](mailto:eva.davis@example.com) | 23  | Information Technology | 2026-01-21 10:05:00 |
+| 7  | Grace Lee | [grace.lee@example.com](mailto:grace.lee@example.com) | 22  | Physics                | 2026-01-21 10:07:00 |
+
+
+3.Fetch only name and email columns:
+select name,email from Students;
+OUTPUT:
+| name           | email                                                           |
+| -------------- | --------------------------------------------------------------- |
+| Alice Johnson  | [alice.johnson@example.com](mailto:alice.johnson@example.com)   |
+| Bob Smith      | [bob.smith@example.com](mailto:bob.smith@example.com)           |
+| Carla Williams | [carla.williams@example.com](mailto:carla.williams@example.com) |
+| David Brown    | [david.brown@example.com](mailto:david.brown@example.com)       |
+| Eva Davis      | [eva.davis@example.com](mailto:eva.davis@example.com)           |
+| Frank Wilson   | [frank.wilson@example.com](mailto:frank.wilson@example.com)     |
+| Grace Lee      | [grace.lee@example.com](mailto:grace.lee@example.com)           |
+
+4.Fetch students enrolled in a specific course:
+select * from Students where course="Computer Science Engineering";
+OUTPUT:
+| id | name          | email                                                         | age | course           | created_at          |
+| -- | ------------- | ------------------------------------------------------------- | --- | ---------------- | ------------------- |
+| 1  | Alice Johnson | [alice.johnson@example.com](mailto:alice.johnson@example.com) | 20  | Computer Science | 2026-01-21 10:00:00 |
+
+5.Update Data
+Write SQL queries to:
+Update the age of one student
+Update the course for all students enrolled in one course:
+update Students
+set age=21
+where name='Alice Johnson';
+update Students
+set course='Civil Engineering'
+where course='Mechanical Engineering';
+select * from Students;
+OUTPUT:
+| id | name           | email                                                           | age | course                 | created_at          |
+| -- | -------------- | --------------------------------------------------------------- | --- | ---------------------- | ------------------- |
+| 1  | Alice Johnson  | [alice.johnson@example.com](mailto:alice.johnson@example.com)   | 21  | Computer Science       | 2026-01-21 10:00:00 |
+| 2  | Bob Smith      | [bob.smith@example.com](mailto:bob.smith@example.com)           | 22  | Civil Engineering      | 2026-01-21 10:00:01 |
+| 3  | Carla Williams | [carla.williams@example.com](mailto:carla.williams@example.com) | 19  | Electrical Engineering | 2026-01-21 10:00:02 |
+| 4  | David Brown    | [david.brown@example.com](mailto:david.brown@example.com)       | 21  | Civil Engineering      | 2026-01-21 10:00:03 |
+| 5  | Eva Davis      | [eva.davis@example.com](mailto:eva.davis@example.com)           | 23  | Information Technology | 2026-01-21 10:00:04 |
+| 6  | Frank Wilson   | [frank.wilson@example.com](mailto:frank.wilson@example.com)     | 20  | Mathematics            | 2026-01-21 10:00:05 |
+| 7  | Grace Lee      | [grace.lee@example.com](mailto:grace.lee@example.com)           | 22  | Physics                | 2026-01-21 10:00:06 |
+
+6. Delete Data
+Write SQL queries to:
+Delete one student using id
+Delete all students below a certain age:
+delete from Students where id=3;
+delete from Students where age<21;
+select * from Students;
+OUTPUT:
+| id | name          | email                                                         | age | course                 | created_at          |
+| -- | ------------- | ------------------------------------------------------------- | --- | ---------------------- | ------------------- |
+| 1  | Alice Johnson | [alice.johnson@example.com](mailto:alice.johnson@example.com) | 21  | Computer Science       | 2026-01-21 10:00:00 |
+| 2  | Bob Smith     | [bob.smith@example.com](mailto:bob.smith@example.com)         | 22  | Civil Engineering      | 2026-01-21 10:00:01 |
+| 5  | Eva Davis     | [eva.davis@example.com](mailto:eva.davis@example.com)         | 23  | Information Technology | 2026-01-21 10:00:04 |
+| 7  | Grace Lee     | [grace.lee@example.com](mailto:grace.lee@example.com)         | 22  | Physics                | 2026-01-21 10:00:06 |
