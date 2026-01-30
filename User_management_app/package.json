@@ -1,0 +1,27 @@
+{
+  "name": "assignments_",
+  "version": "1.0.0",
+  "description": "User Management Application using Node.js, Express, and Supabase",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paramatamallika/Assignments_.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paramatamallika/Assignments_/issues"
+  },
+  "homepage": "https://github.com/paramatamallika/Assignments_#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.93.3",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  }
+}
